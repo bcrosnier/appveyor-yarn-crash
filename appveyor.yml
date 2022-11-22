@@ -1,0 +1,8 @@
+﻿
+version: build{build}
+image: Visual Studio 2022
+branches:
+  only:
+    - main
+build_script:
+  - node .yarn/releases/yarn-3.2.2.cjs
