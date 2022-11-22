@@ -20,4 +20,6 @@ jobs:
         architecture: ${{ matrix.node_arch }}
     - run: corepack enable
     - run: corepack prepare yarn@${{ matrix.yarn_version }} --activate
+    - run: yarn set version ${{ matrix.yarn_version }}
+    - run: yarn config set enableImmutableInstalls false
     - run: yarn
