@@ -6,12 +6,16 @@ on:
     branches: [ "main" ]
 jobs:
   build:
+    strategy:
+      matrix:
+        node_version: [16, 18]
+        node_arch: [x86, x64]
     runs-on: windows-2022
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
-        node-version: '18'
-        architecture: 'x86'
-        cache: 'yarn'
+        node-version: ${{ matrix.node_version }}
+        architecture: ${{ matrix.node_arch }}
+    - run: npm install yarn@latest
     - run: yarn install
