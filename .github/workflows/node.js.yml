@@ -9,10 +9,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-22.04, windows-2022]
         node_version: [18, 19]
         node_arch: [x86, x64]
         yarn_version: [3.3.0, 3.2.4]
-    runs-on: windows-2022
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
